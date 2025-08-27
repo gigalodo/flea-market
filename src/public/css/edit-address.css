@@ -1,0 +1,89 @@
+.contact-form__content {
+    max-width: 600px;
+    margin: 40px auto 60px;
+    padding: 20px;
+    background: #fff; 
+    border-radius: 8px;
+}
+
+.contact-form__heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-form__heading h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__group-title {
+    margin-bottom: 8px;
+}
+
+.form__label--item {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+.form__group-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input--text {
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: #fff;
+}
+
+.form__input--text:focus {
+    border-color: #f44336;
+    box-shadow: none; /* 影も削除 */
+}
+
+.form__error {
+    margin-top: 6px;
+    color: #f44336;
+    font-size: 14px;
+    min-height: 18px;
+}
+
+.form__button {
+    margin-top: 30px;
+}
+
+.form__button-submit {
+    width: 100%;          
+    max-width: 600px;     
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 12px 0;      
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+}
+
+.form__button-submit:hover {
+    background-color: #d32f2f;
+}

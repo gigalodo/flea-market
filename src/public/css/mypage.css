@@ -1,0 +1,99 @@
+.mypage__content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ヘッダー部分 */
+.mypage__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.mypage__profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.mypage__profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.mypage__profile h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile__edit {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.profile__edit:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* タブ部分 */
+.mypage__tabs {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 2px solid #ddd; /* 下線を全幅に */
+    padding-bottom: 10px;
+}
+
+.mypage__tabs button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.mypage__tabs button.active {
+    color: #e74c3c; /* アクティブ時は赤 */
+}
+
+/* 商品一覧 */
+.mypage__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.mypage__card {
+    text-align: center;
+}
+
+.mypage__card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #eee;
+}
+
+.mypage__card p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}

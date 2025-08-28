@@ -7,10 +7,8 @@
 
 @section('content')
 
-
 <div class="item__content">
-    <!-- 左右ブロックはformの外側に配置 -->
-    <div class="left__block">
+    <div class="item__left">
         <form action="{{ '/purchase/'.$item->id }}" method="post">
             @csrf
 
@@ -20,33 +18,32 @@
                 </div>
 
                 <div class="product__info">
-                    <h1 class="product__name">{{ $item->name }}</h1>
+                    <h1 class="product__title">{{ $item->name }}</h1>
                     <h2 class="product__price">¥{{ number_format($item->price) }}</h2>
                 </div>
             </div>
 
-
-            <div class="payment__method">
-                <h2>支払い方法</h2>
+            <div class="payment__section">
+                <h2 class="section__title">支払い方法</h2>
                 @error('payment_method')
-                <p class="error">{{ $message }}</p>
+                <p class="form__error">{{ $message }}</p>
                 @enderror
-                <select id="payment-select">
+                <select id="paymentSelect">
                     <option value="0">コンビニ払い</option>
                     <option value="1">カード支払い</option>
                 </select>
             </div>
 
-            <div class="shipping__address">
-                <h2>配送先</h2>
+            <div class="shipping__section">
+                <h2 class="section__title">配送先</h2>
                 @error('post_code')
-                <p class="error">{{ $message }}</p>
+                <p class="form__error">{{ $message }}</p>
                 @enderror
                 @error('address')
-                <p class="error">{{ $message }}</p>
+                <p class="form__error">{{ $message }}</p>
                 @enderror
 
-                <div class="address__change">
+                <div class="shipping__change">
                     <a href="/purchase/address/{{ $item->id }}">変更する</a>
                 </div>
 
@@ -63,7 +60,7 @@
         </form>
     </div>
 
-    <div class="right__block">
+    <div class="item__right">
         <form action="{{ '/purchase/'.$item->id }}" method="post">
             @csrf
             <table class="summary__table">
@@ -73,11 +70,11 @@
                 </tr>
                 <tr>
                     <td>支払い方法</td>
-                    <td id="payment-display">コンビニ払い</td>
+                    <td id="paymentDisplay">コンビニ払い</td>
                 </tr>
             </table>
 
-            <input type="hidden" name="payment_method" id="payment-method" value="0">
+            <input type="hidden" name="payment_method" id="paymentMethod" value="0">
             <input type="hidden" name="post_code" value="{{ $address['post_code'] ?? '' }}">
             <input type="hidden" name="address" value="{{ $address['address'] ?? '' }}">
             <input type="hidden" name="building" value="{{ $address['building'] ?? '' }}">
@@ -87,20 +84,14 @@
     </div>
 </div>
 
-
 <script>
-    const selector = document.getElementById('payment-select');
-    const display = document.getElementById('payment-display');
-    const hidden = document.getElementById('payment-method');
+    const paymentSelect = document.getElementById('paymentSelect');
+    const paymentDisplay = document.getElementById('paymentDisplay');
+    const paymentMethod = document.getElementById('paymentMethod');
 
-    selector.addEventListener('change', function() {
-        if (selector.value == 0) {
-            display.textContent = "コンビニ払い";
-        } else {
-            display.textContent = "カード支払い";
-        }
-
-        hidden.value = selector.value;
+    paymentSelect.addEventListener('change', function() {
+        paymentDisplay.textContent = paymentSelect.value == 0 ? "コンビニ払い" : "カード支払い";
+        paymentMethod.value = paymentSelect.value;
     });
 </script>
 @endsection

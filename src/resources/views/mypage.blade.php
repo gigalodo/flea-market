@@ -7,37 +7,37 @@
 @section('content')
 @php $user = Auth::user(); @endphp
 
-<div class="mypage__content">
+<div class="mypage">
     <div class="mypage__header">
         <div class="mypage__profile">
             <img src="{{ asset('storage/profile_images/'.$user->user_img) }}" alt="{{$user->user_img}}">
-            <h2>{{$user->name}}</h2>
+            <h1 class="mypage__username">{{$user->name}}</h1>
         </div>
-        <a class="profile__edit" href="/mypage/profile">プロフィールを編集</a>
+        <a class="mypage__edit-btn" href="/mypage/profile">プロフィールを編集</a>
     </div>
 
     <div class="mypage__tabs">
-        <button onclick="switchTab('sell')" id="tab-sell">出品した商品</button>
-        <button onclick="switchTab('buy')" id="tab-buy">購入した商品</button>
+        <button class="mypage__tab-btn mypage__tab-btn--sell">出品した商品</button>
+        <button class="mypage__tab-btn mypage__tab-btn--buy">購入した商品</button>
     </div>
 
-    <div id="sellContent" class="mypage__grid">
+    <div class="mypage__grid mypage__grid--sell">
         @foreach($sell_items as $item)
-        <div class="mypage__card">
+        <div class="mypage__item-card">
             <a href="/item/{{$item->id}}">
                 <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}">
-                <p>{{$item->name}}</p>
+                <p class="mypage__item-name">{{$item->name}}</p>
             </a>
         </div>
         @endforeach
     </div>
 
-    <div id="buyContent" class="mypage__grid" style="display: none;">
+    <div class="mypage__grid mypage__grid--buy" style="display: none;">
         @foreach($buy_items as $item)
-        <div class="mypage__card">
+        <div class="mypage__item-card">
             <a href="/item/{{$item->id}}">
                 <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}">
-                <p>{{$item->name}}</p>
+                <p class="mypage__item-name">{{$item->name}}</p>
             </a>
         </div>
         @endforeach
@@ -45,32 +45,32 @@
 </div>
 
 <script>
-    function switchTab(tab) {
-        const sell = document.getElementById('sellContent');
-        const buy = document.getElementById('buyContent');
-        const tabSell = document.getElementById('tab-sell');
-        const tabBuy = document.getElementById('tab-buy');
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabSell = document.querySelector('.mypage__tab-btn--sell');
+        const tabBuy = document.querySelector('.mypage__tab-btn--buy');
+        const gridSell = document.querySelector('.mypage__grid--sell');
+        const gridBuy = document.querySelector('.mypage__grid--buy');
 
-        if (tab === 'sell') {
-            buy.style.display = 'none';
-            sell.style.display = 'grid';
-            tabSell.classList.add('active');
-            tabBuy.classList.remove('active');
-        } else {
-            buy.style.display = 'grid';
-            sell.style.display = 'none';
-            tabBuy.classList.add('active');
-            tabSell.classList.remove('active');
+        function switchTab(tab) {
+            if (tab === 'buy') {
+                gridBuy.style.display = 'grid';
+                gridSell.style.display = 'none';
+                tabBuy.classList.add('active');
+                tabSell.classList.remove('active');
+            } else {
+                gridSell.style.display = 'grid';
+                gridBuy.style.display = 'none';
+                tabSell.classList.add('active');
+                tabBuy.classList.remove('active');
+            }
+            history.pushState(null, '', `?page=${tab}`);
         }
 
-        history.pushState(null, '', `?page=${tab}`);
-    }
+        tabSell.addEventListener('click', () => switchTab('sell'));
+        tabBuy.addEventListener('click', () => switchTab('buy'));
 
-    function initializeTab() {
         const page = new URLSearchParams(location.search).get('page');
         switchTab(page === 'buy' ? 'buy' : 'sell');
-    }
-
-    document.addEventListener('DOMContentLoaded', initializeTab);
+    });
 </script>
 @endsection

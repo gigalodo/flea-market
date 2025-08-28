@@ -7,19 +7,15 @@
 
 @section('content')
 <div class="item__content">
-    <!-- 左カラム（画像） -->
     <div class="item__image">
         <div class="image-wrapper">
-            <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}">
-
+            <img src="{{ asset('storage/product_images/'.$item->img) }}" class="item__image" alt="{{$item->img}}">
             @if($item->sold)
-            <span class="sold-label">
-                SOLD
-            </span>
+            <span class="sold-label">SOLD</span>
             @endif
         </div>
     </div>
-    <!-- 右カラム（詳細情報） -->
+
     <div class="item__details">
         <h1 class="item__title">{{$item->name}}</h1>
         <p class="item__brand">{{$item->brand}}</p>
@@ -46,13 +42,9 @@
             </div>
         </div>
 
-
-        <div class="item__purchase">
-            <a href="/purchase/{{$item->id}}"
-                @if ($item->sold || $item->user_id === Auth::id()) onclick="return false;" text-decoration: none;" @endif>
-                購入手続きへ
-            </a>
-        </div>
+        <a href="/purchase/{{$item->id}}" class="item__purchase-link" @if ($item->sold || $item->user_id === Auth::id()) onclick="return false;" @endif>
+            購入手続きへ
+        </a>
 
         <div class="item__section">
             <h2>商品説明</h2>
@@ -73,7 +65,6 @@
             </div>
         </div>
 
-
         <div class="item__section" id="coment_area">
             <h2>コメント ({{$coments->count()}})</h2>
             @foreach($coments as $coment)
@@ -90,10 +81,10 @@
         <form action="/item/{{$item->id}}" method="post" class="item__comment-form">
             @csrf
             <h3>商品へのコメント</h3>
-            @error('content')
-            <p style="color:red">{{ $message }}</p>
-            @enderror
-            <textarea name="content">{{old('content')}}</textarea><br>
+            <div class="form__error">
+                @error('content'){{ $message }}@enderror
+            </div>
+            <textarea name="content">{{old('content')}}</textarea>
             <button type="submit" class="comment__submit">コメントを送信する</button>
         </form>
     </div>

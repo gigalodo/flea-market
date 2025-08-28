@@ -14,39 +14,41 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="header-utilities">
+            <div class="header__utilities">
                 <a class="header__logo" href="/">
                     <img src="{{ asset('images/logo.svg') }}" alt="CoachTechロゴ" class="header__logo-image">
                 </a>
                 @if (!request()->is('login') && !request()->is('register'))
                 <div class="header__search">
-                    <form action="/" method="post">
+                    <form class="header__search-form" action="/" method="post">
                         @csrf
-                        <input type="text" name="search_word" value="{{ $search_word ?? '' }}" placeholder="何をお探しですか？">
+                        <input class="header__search-input" type="text" name="search_word" value="{{ $search_word ?? '' }}" placeholder="何をお探しですか？">
                     </form>
                 </div>
                 <nav>
-                    <ul class="header-nav">
+                    <ul class="header__nav">
 
                         @if (Auth::check())
-                        <li class="header-nav__item">
-                            <form action="/logout" method="post">
+                        <li class="header__nav-item">
+                            <form class="header__nav-form" action="/logout" method="post">
                                 @csrf
-                                <button class="header-nav__button">ログアウト</button>
+                                <button class="header__nav-button">ログアウト</button>
                             </form>
                         </li>
                         @else
-                        <li class="header-nav__item">
-                            <a href="/login"><button class="header-nav__button">ログイン</button></a>
+                        <li class="header__nav-item">
+                            <a href="/login">
+                                <button class="header__nav-button">ログイン</button>
+                            </a>
                         </li>
                         @endif
 
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="/mypage">マイページ</a>
                         </li>
 
-                        <li class="header-nav__item">
-                            <a class="header-nav__link_sell" href="/sell">出品</a>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link--sell" href="/sell">出品</a>
                         </li>
 
                     </ul>

@@ -3,16 +3,17 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
 }
 
-.profile__content {
+.profile {
     max-width: 500px;
     margin: 40px auto;
 }
 
-.profile__heading h2 {
+.profile__heading-title {
     text-align: center;
     font-size: 24px;
     margin-bottom: 30px;
 }
+
 
 .profile__image-upload {
     display: flex;
@@ -22,7 +23,7 @@ body {
     margin-bottom: 30px;
 }
 
-.preview-img {
+.profile__preview-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -30,7 +31,7 @@ body {
     background-color: #ddd;
 }
 
-.custom-file-upload {
+.profile__file-label {
     padding: 10px 20px;
     background-color: #ffffff;
     color: #e74c3c;
@@ -41,26 +42,26 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.custom-file-upload:hover {
+.profile__file-label:hover {
     background-color: #e74c3c;
     color: #ffffff;
 }
 
-.file-input {
+.profile__file-input {
     display: none;
 }
 
-.form__group {
+.profile__form-group {
     margin-bottom: 20px;
 }
 
-.form__label--item {
+.profile__label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-.form__input--text input {
+.profile__input-text {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -68,13 +69,13 @@ body {
     font-size: 16px;
 }
 
-.form__error {
+.profile__error {
     color: red;
     font-size: 14px;
     margin-top: 5px;
 }
 
-.form__button-submit {
+.profile__button-submit {
     width: 100%;
     padding: 12px;
     background-color: #e74c3c;
@@ -87,6 +88,6 @@ body {
     transition: background-color 0.2s ease;
 }
 
-.form__button-submit:hover {
+.profile__button-submit:hover {
     background-color: #c0392b;
 }

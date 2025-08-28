@@ -6,43 +6,39 @@
 
 @section('content')
 
-<div class="item__content">
-    <div class="tab__menu">
-        <button id="tab-recommend" onclick="switchTab('recommend')">おすすめ</button>
-        <button id="tab-mylist" onclick="switchTab('mylist')">マイリスト</button>
+<div class="product-list__content">
+    <div class="product-list__tabs">
+        <button id="tab-recommend" class="product-list__tab-button" onclick="switchTab('recommend')">おすすめ</button>
+        <button id="tab-mylist" class="product-list__tab-button" onclick="switchTab('mylist')">マイリスト</button>
     </div>
 
-    <div id="recommendItems" class="item__list">
+    <div id="recommendItems" class="product-list__items">
         @foreach($recommend_items as $item)
-        <div class="item__card">
+        <div class="product-list__card">
             <a href="/item/{{$item->id}}">
-                <div class="image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}" class="item__image">
+                <div class="product-list__image-wrapper">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}" class="product-list__image">
                     @if($item->sold)
-                    <span class="sold-label">
-                        SOLD
-                    </span>
+                    <span class="product-list__sold-label">SOLD</span>
                     @endif
                 </div>
-                <p class="item__name">{{$item->name}}</p>
+                <p class="product-list__name">{{$item->name}}</p>
             </a>
         </div>
         @endforeach
     </div>
 
-    <div id="mylistItems" class="item__list" style="display: none;">
+    <div id="mylistItems" class="product-list__items" style="display: none;">
         @foreach($mylist_items as $item)
-        <div class="item__card">
+        <div class="product-list__card">
             <a href="/item/{{$item->id}}">
-                <div class="image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}" class="item__image">
+                <div class="product-list__image-wrapper">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}" class="product-list__image">
                     @if($item->sold)
-                    <span class="sold-label">
-                        SOLD
-                    </span>
+                    <span class="product-list__sold-label">SOLD</span>
                     @endif
                 </div>
-                <p class="item__name">{{$item->name}}</p>
+                <p class="product-list__name">{{$item->name}}</p>
             </a>
         </div>
         @endforeach

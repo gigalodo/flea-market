@@ -1,10 +1,9 @@
-.mypage__content {
+.mypage {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* ヘッダー部分 */
 .mypage__header {
     display: flex;
     align-items: center;
@@ -26,13 +25,13 @@
     background-color: #eee;
 }
 
-.mypage__profile h2 {
+.mypage__username {
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-.profile__edit {
+.mypage__edit-btn {
     display: inline-block;
     padding: 10px 20px;
     background-color: #fff;
@@ -44,23 +43,22 @@
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.profile__edit:hover {
+.mypage__edit-btn:hover {
     background-color: #e74c3c;
     color: #fff;
 }
 
-/* タブ部分 */
 .mypage__tabs {
     display: flex;
     gap: 40px;
     margin-bottom: 30px;
     font-weight: bold;
     font-size: 18px;
-    border-bottom: 2px solid #ddd; /* 下線を全幅に */
+    border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
 }
 
-.mypage__tabs button {
+.mypage__tab-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -69,22 +67,21 @@
     font-size: 18px;
 }
 
-.mypage__tabs button.active {
-    color: #e74c3c; /* アクティブ時は赤 */
+.mypage__tab-btn.active {
+    color: #e74c3c;
 }
 
-/* 商品一覧 */
 .mypage__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
-.mypage__card {
+.mypage__item-card {
     text-align: center;
 }
 
-.mypage__card img {
+.mypage__item-card img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -92,7 +89,7 @@
     background-color: #eee;
 }
 
-.mypage__card p {
+.mypage__item-name {
     margin-top: 10px;
     font-size: 16px;
     color: #333;

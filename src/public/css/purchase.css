@@ -10,12 +10,10 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* 左側 */
-.left__block {
+.item__left {
     flex: 1;
 }
 
-/* 画像と名前・価格を横並びに */
 .product__header {
     display: flex;
     align-items: center;
@@ -38,7 +36,7 @@
     justify-content: center;
 }
 
-.product__name {
+.product__title {
     font-size: 20px;
     font-weight: bold;
 }
@@ -48,11 +46,15 @@
     margin-top: 5px;
 }
 
-/* 支払い方法 */
-.payment__method {
+.payment__section {
     margin-top: 20px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
+}
+
+.section__title {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 select {
@@ -61,20 +63,18 @@ select {
     margin-top: 10px;
 }
 
-/* 配送先 */
-.shipping__address {
+.shipping__section {
     margin-top: 20px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
 }
 
-.address__change {
+.shipping__change {
     text-align: right;
     margin-bottom: 10px;
 }
 
-/* 右側：大きく＆整える */
-.right__block {
+.item__right {
     width: 350px;
     border: 1px solid #ccc;
     padding: 25px;
@@ -107,8 +107,7 @@ select {
     background-color: #e04c4c;
 }
 
-/* エラー表示 */
-.error {
+.form__error {
     color: red;
     font-size: 14px;
 }

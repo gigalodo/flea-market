@@ -101,7 +101,8 @@
 }
 
 input::placeholder {
-  color: #000 !important;
+  color: #000;
+  /* color: #000 !important; */
   opacity: 1;
 }
 

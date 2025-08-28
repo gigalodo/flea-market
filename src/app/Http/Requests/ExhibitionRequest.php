@@ -26,7 +26,6 @@ class ExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => ['required',  'max:255'],
             'brand' => ['max:255'],
             'price' => ['required', 'integer', 'min:0'],
@@ -34,8 +33,6 @@ class ExhibitionRequest extends FormRequest
             'img' =>  ['required',  'max:255', 'image', 'mimes:jpg,jpeg,png'],
             'condition_id' => ['required'],
             'categories' => ['required', 'array', 'min:1']
-            //'sold' => ['required'],
-
         ];
     }
 
@@ -51,10 +48,8 @@ class ExhibitionRequest extends FormRequest
             'price.integer' => '商品価格は半角の数値で入力してください',
             'price.min' => '商品価格は0円以上で入力してください',
 
-
             'detail.required' => '商品説明を入力してください',
             'detail.max' => '商品説明は255文字以内で入力してください',
-
 
             'img.required' => '商品画像は必須です',
             'img.max' => '画像ファイルは拡張子含め255文字以内で指定してください',
@@ -63,7 +58,6 @@ class ExhibitionRequest extends FormRequest
             'condition_id.required' => '商品の状態を入力してください',
 
             'categories.required' => '商品のカテゴリーを入力してください',
-
         ];
     }
 }

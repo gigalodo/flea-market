@@ -22,14 +22,11 @@ class CreateItemsTable extends Migration
             $table->text('detail');
             $table->string('img', 255);
             $table->foreignId('condition_id')->constrained();
-            //購入者情報
             $table->foreignId('buyer_id')->nullable()->constrained('users');
             $table->tinyInteger('payment_method')->nullable();
             $table->string('post_code', 255)->nullable();
             $table->string('address', 255)->nullable();
             $table->string('building', 255)->nullable();
-            //中間テーブル追加の為削除
-            //$table->foreignId('category_id')->constrained();
             $table->tinyInteger('sold');
             $table->timestamps(0);
         });

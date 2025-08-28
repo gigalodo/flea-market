@@ -2,42 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\CommentRequest;
-use App\Http\Requests\PurchaseRequest;
-use App\Http\Requests\AddressRequest;
 use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\ExhibitionRequest;
 
 use App\Models\User;
 use App\Models\Item;
-use App\Models\Category;
-use App\Models\CategoryItem;
-use App\Models\Condition;
-use App\Models\LikeButton;
-use App\Models\Coment;
-
 
 use Illuminate\Support\Str;
-
-
-use Illuminate\Support\Facades\Hash;
-
 
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    //
 
     public function mypage()
     {
 
         $sell_items = Item::where('user_id', Auth::id())->get();
         $buy_items = Item::where('buyer_id', Auth::id())->get();
-        // dd($buy_items);
         return view('mypage', compact('sell_items', 'buy_items'));
     }
 

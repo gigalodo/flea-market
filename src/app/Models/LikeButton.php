@@ -15,6 +15,7 @@ class LikeButton extends Model
         'item_id',
 
     ];
+
     public function item()
     {
         return $this->belongsTo(Item::class);

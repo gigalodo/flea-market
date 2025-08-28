@@ -24,7 +24,6 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => ['required',  'max:20'],
             'email' => ['required',  'email', 'max:255', 'unique:users'],
             'password' => ['required',  'min:8', 'max:255', 'confirmed'],
@@ -50,9 +49,8 @@ class RegisterRequest extends FormRequest
             'password.confirmed' => 'パスワードと一致しません',
 
             'password_confirmation.required' => '確認用パスワードを入力してください',
-            'password_confirmation.min' => '確認用パスワードは8文字以上で入力してください', //
-            'password_confirmation.max' => '確認用パスワードを255文字以内で入力してください', //
-
+            'password_confirmation.min' => '確認用パスワードは8文字以上で入力してください',
+            'password_confirmation.max' => '確認用パスワードを255文字以内で入力してください',
         ];
     }
 }

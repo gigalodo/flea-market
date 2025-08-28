@@ -16,17 +16,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-
-
 Route::post('/register', [AuthController::class, 'authenticate']);
 Route::post('/login', [AuthController::class, 'login']);
-
-
 
 Route::get('/', [ItemController::class, 'index']);
 Route::post('/', [ItemController::class, 'serchItem']);
 
-//モデル結合ルート
 Route::get('/item/{item}', [ItemController::class, 'bindItem']);
 
 Route::middleware('auth')->group(

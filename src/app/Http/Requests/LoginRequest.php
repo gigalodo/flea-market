@@ -24,10 +24,8 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required',  'min:8', 'max:255'],
-
         ];
     }
 
@@ -41,8 +39,6 @@ class LoginRequest extends FormRequest
             'password.required' => 'パスワードを入力してください',
             'password.min' => 'パスワードは8文字以上で入力してください',
             'password.max' => 'パスワードを255文字以内で入力してください',
-
-
         ];
     }
 }

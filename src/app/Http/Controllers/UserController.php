@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Item;
 
 use Illuminate\Support\Str;
-
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -31,7 +30,6 @@ class UserController extends Controller
 
     public function storeProfile(ProfileRequest $request)
     {
-
         $data = $request->only('name', 'post_code', 'address', 'building');
 
         $file = $request->file('user_img');

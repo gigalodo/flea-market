@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -16,14 +15,6 @@ class ItemsTableSeeder extends Seeder
     public function run()
     {
         $userId = 1;
-
-        User::firstOrCreate([
-            'id' => $userId,
-        ], [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
-        ]);
 
         $conditionMap = [
             '良好' => 1,

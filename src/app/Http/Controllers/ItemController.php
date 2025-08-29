@@ -23,7 +23,6 @@ class ItemController extends Controller
 
     public function index()
     {
-
         $recommend_items = Item::where('user_id', '!=', Auth::id())->get();
 
         $likes = LikeButton::where('user_id', Auth::id())->with('item')->get();

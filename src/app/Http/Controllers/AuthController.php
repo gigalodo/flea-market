@@ -10,13 +10,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-
 class AuthController extends Controller
 {
 
     public function authenticate(RegisterRequest $request)
     {
-
         $data = $request->validated();
 
         $user =  User::create([

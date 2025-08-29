@@ -25,7 +25,12 @@
         @foreach($sell_items as $item)
         <div class="mypage__item-card">
             <a href="/item/{{$item->id}}">
-                <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}">
+                <div class="mypage-list__image-wrapper">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="{{$item->img}}">
+                    @if($item->sold)
+                    <span class="mypage-list__sold-label">SOLD</span>
+                    @endif
+                </div>
                 <p class="mypage__item-name">{{$item->name}}</p>
             </a>
         </div>
@@ -36,7 +41,12 @@
         @foreach($buy_items as $item)
         <div class="mypage__item-card">
             <a href="/item/{{$item->id}}">
-                <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}">
+                <div class="mypage-list__image-wrapper">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="{{$item->img}}">
+                    @if($item->sold)
+                    <span class="mypage-list__sold-label">SOLD</span>
+                    @endif
+                </div>
                 <p class="mypage__item-name">{{$item->name}}</p>
             </a>
         </div>

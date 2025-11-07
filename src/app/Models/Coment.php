@@ -14,9 +14,9 @@ class Coment extends Model
         'item_id',
         'content',
         'image', //trade画面用
-        'is_trading', //trade画面か？
-        'is_read', //既読フラグ
-        'is_hold', //未送信済フラグ
+        'is_trading', //trade画面かどうかのフラグ
+        'is_read', //既読フラグ 既読時true
+        'is_hold', //未送信フラグ 未送信時true
     ];
 
 

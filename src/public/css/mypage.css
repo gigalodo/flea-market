@@ -96,12 +96,11 @@
     color: #333;
 }
 
-
 .mypage-list__image-wrapper {
     position: relative;
     display: inline-block;
   }
-  
+
   .mypage-list__image {
     width: 300px;
     height: 200px;
@@ -109,7 +108,7 @@
     background-color: #eee;
     border: 1px solid #ccc;
   }
-  
+
   .mypage-list__sold-label {
     position: absolute;
     top: 50%;
@@ -143,12 +142,12 @@
 }
 
 .mypage__stars {
-    margin-top: 4px;         /* ユーザー名のすぐ下に */
-    font-size: 28px;         /* 大きめ */
-    color: #FFD700;          /* ★はゴールド */
-    letter-spacing: 3px;     /* 星の間隔 */
+    margin-top: 4px;
+    font-size: 28px;
+    color: #FFD700;
+    letter-spacing: 3px;
 }
 
 .mypage__stars .empty {
-    color: #ccc;             /* 空白の☆は薄いグレー */
+    color: #ccc;
 }

@@ -70,12 +70,12 @@
 }
 
 .address-form__button--submit {
-    width: 100%;          
-    max-width: 600px;     
+    width: 100%;
+    max-width: 600px;
     background-color: #f44336;
     color: #fff;
     border: none;
-    padding: 12px 0;      
+    padding: 12px 0;
     font-size: 16px;
     font-weight: 700;
     border-radius: 8px;

@@ -30,7 +30,6 @@ class ItemsTableSeeder extends Seeder
             'address' => '東京',
         ]);
 
-
         User::firstOrCreate([
             'id' => $userId2,
         ], [
@@ -41,7 +40,6 @@ class ItemsTableSeeder extends Seeder
             'address' => '東京',
         ]);
 
-
         User::firstOrCreate([
             'id' => $userId3,
         ], [
@@ -49,7 +47,6 @@ class ItemsTableSeeder extends Seeder
             'email' => 'test3@example.com',
             'password' => bcrypt('password'),
         ]);
-
 
 
         $conditionMap = [

@@ -49,8 +49,6 @@ Route::middleware('auth')->group(
         Route::put('/chat/update/{chat}', [UserController::class, 'update'])->name('chat.update');
         Route::delete('/chat/delete/{chat}', [UserController::class, 'destroy'])->name('chat.destroy');
 
-
-
         Route::put('/trade/{item}/finish', [UserController::class, 'finish'])->name('trade.finish');
         Route::post('/trade/{item}/evaluate', [UserController::class, 'evaluate'])->name('trade.evaluate');
 

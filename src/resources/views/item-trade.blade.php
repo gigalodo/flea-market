@@ -4,8 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/item-trade.css') }}">
 @endsection
 
-
-
 @section('content')
 <div class="trade-layout">
     <aside class="sidebar">
@@ -21,15 +19,14 @@
         <div class="chat-header">
             <h1>
                 <img
-                    src="{{ $other_user->user_img 
-            ? asset('storage/profile_images/' . $other_user->user_img) 
+                    src="{{ $other_user->user_img
+            ? asset('storage/profile_images/' . $other_user->user_img)
             : asset('storage/profile_images/default-user.png') }}"
                     class="other-img">
                 「{{$other_user->name}}」さんとの取引画面
             </h1>
 
-            @if($item->buyer_id == $self_user->id)
-
+            @if($item->buyer_id == $self_user->id && !$item->is_finished)
             <form id="finishForm">
                 @csrf
                 @method('PUT')
@@ -47,7 +44,6 @@
                 <div class="modal-content">
                     <h2>取引が完了しました。</h2>
                     <p>今回の取引相手はどうでしたか？</p>
-
                     <form id="evaluationForm" action="{{ route('trade.evaluate', $item->id) }}" method="POST">
                         @csrf
                         <div class="star-rating">
@@ -64,7 +60,6 @@
                 </div>
             </div>
 
-
         </div>
         <div class="item-summary">
             <div class="item-summary__image"> <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="商品画像"> </div>
@@ -78,7 +73,7 @@
             @if ($chat->is_self)
             <div class="message self" data-id="{{ $chat->id }}">
                 <div class="user-info">{{$self_user->name}}
-                    <img src="{{ $self_user->user_img 
+                    <img src="{{ $self_user->user_img
             ? asset('storage/profile_images/'.$self_user->user_img)
             : asset('storage/profile_images/default-user.png') }}" class="message-img">
                 </div>
@@ -100,8 +95,8 @@
             @else
             <div class="message other" data-id="{{ $chat->id }}">
                 <div class="user-info">{{$other_user->name}}
-                    <img src="{{ $other_user->user_img 
-            ? asset('storage/profile_images/' . $other_user->user_img) 
+                    <img src="{{ $other_user->user_img
+            ? asset('storage/profile_images/' . $other_user->user_img)
             : asset('storage/profile_images/default-user.png') }}" class="message-img">
                 </div>
                 <div class="message-bubble">{{ $chat->message }}</div>
@@ -109,6 +104,7 @@
             @endif
             @endforeach
         </div>
+
         @if ($errors->any())
         <div class="todo__alert--danger">
             <ul>
@@ -118,6 +114,7 @@
             </ul>
         </div>
         @endif
+
         <form class="chat-input" action="{{ route('chat.send', ['item' => $item->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" name="message" placeholder="取引メッセージを記入してください" value="{{ old('message', $unsentComment->content ?? '') }}">
@@ -131,15 +128,12 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // =============================
-        // 💬 メッセージ編集機能
-        // =============================
         document.querySelectorAll('.edit-btn').forEach(btn => {
             btn.addEventListener('click', e => {
                 const msgDiv = e.target.closest('.message');
                 const currentText = msgDiv.querySelector('.message-bubble').textContent;
                 const newText = prompt('メッセージを編集:', currentText);
-                if (!newText) return; // キャンセルなら終了
+                if (!newText) return;
 
                 const chatId = msgDiv.dataset.id;
                 const form = document.createElement('form');
@@ -153,28 +147,19 @@
                 `;
 
                 document.body.appendChild(form);
-                form.submit(); // 送信後リロード
+                form.submit();
             });
         });
 
-
-        // =============================
-        // 📷 画像アップロードボタン
-        // =============================
         document.getElementById('imageButton').addEventListener('click', () => {
             document.getElementById('imageUpload').click();
         });
 
-
-        // =============================
-        // ✅ 取引完了ボタン → DB更新 & モーダル表示
-        // =============================
         const finishBtn = document.getElementById('finishButton');
         if (finishBtn) {
             finishBtn.addEventListener('click', async () => {
                 if (!confirm('取引を完了しますか？')) return;
                 const form = document.getElementById('finishForm');
-                console.log("aaaaa1");
                 console.log("URL:", "{{ route('trade.finish', $item->id) }}");
                 console.log("CSRF:", form.querySelector('[name=_token]').value);
 
@@ -185,26 +170,19 @@
                         "Accept": "application/json",
                     },
                 });
-                console.log("aaaaa2");
                 const result = await response.json();
-                console.log(result); // ここで item と seller の情報が見える
+
                 if (result.success) {
-                    // モーダルを表示
                     document.getElementById('evaluationModal').style.display = 'flex';
                 }
             });
         }
 
-
-        // =============================
-        // ✨ 星評価クリック動作
-        // =============================
         const stars = document.querySelectorAll('.star');
         const rateInput = document.getElementById('rate');
 
         if (stars.length) {
             stars.forEach(star => {
-                // 星にマウスを乗せた時（ホバー）
                 star.addEventListener('mouseover', () => {
                     stars.forEach(s => s.classList.remove('hovered'));
                     for (let i = 0; i < star.dataset.value; i++) {
@@ -212,12 +190,10 @@
                     }
                 });
 
-                // ホバー解除でリセット
                 star.addEventListener('mouseout', () => {
                     stars.forEach(s => s.classList.remove('hovered'));
                 });
 
-                // 星クリックで選択決定
                 star.addEventListener('click', () => {
                     rateInput.value = star.dataset.value;
                     stars.forEach(s => s.classList.remove('selected'));
@@ -228,10 +204,6 @@
             });
         }
 
-
-        // =============================
-        // ❌ モーダルを閉じる（キャンセルボタン）
-        // =============================
         const closeModal = document.getElementById('closeModal');
         if (closeModal) {
             closeModal.addEventListener('click', () => {
@@ -239,11 +211,7 @@
             });
         }
 
-
-
-
-
-
+        //メッセージ保存機能
         const input = document.querySelector('.chat-input input[name="message"]');
         const itemId = "{{ $item->id }}";
 
@@ -256,16 +224,10 @@
             data.append('message', message);
             data.append('_token', "{{ csrf_token() }}");
 
-            // ページ離脱時でもDB更新できる
             navigator.sendBeacon("{{ route('chat.hold') }}", data);
         }
 
-        // ページ閉じる、リロード、画面遷移などの直前
         window.addEventListener('beforeunload', saveHoldMessage);
-
-
-
-
     });
 
 
@@ -276,5 +238,4 @@
         }
     }
 </script>
-
 @endsection

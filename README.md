@@ -12,6 +12,13 @@ Laravel環境構築
 -  2.composer install
 -  3.cp .env.example .env
 -  4.envファイルの環境変数を変更
+```
+　DB_HOSTをmysqlに変更
+　DB_DATABASEをlaravel_dbに変更
+　DB_USERNAMEをlaravel_userに変更
+　DB_PASSをlaravel_passに変更
+　MAIL_FROM_ADDRESSに送信元アドレスを設定
+```
 -  5.php artisan key:generate
 -  6.php artisan migrate
 -  7.php artisan db:seed
@@ -21,10 +28,20 @@ Laravel環境構築
 -  Laravel 8.83.29
 -  PHP 8.1
 -  mysql 8.0.26
+-  MailHog
 
 ## ER図
- ![ER図](./src/public/images/flea.png)
+ ![ER図](./src/public/images/flea_pro.png)
+
+## ログイン情報
+ユーザー1(item1-5)  
+　 id：test1@example.com   pass：password  
+ユーザー2(item6-10)  
+　 id：test2@example.com   pass：password  
+ユーザー3  
+　 id：test3@example.com   pass：password  
 
 ## URL
 -  開発環境：http://localhost/
 -  phpMyAdmin：http://localhost:8080
+-  MailHog：http://localhost:8025/

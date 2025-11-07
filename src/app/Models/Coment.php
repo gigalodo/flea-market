@@ -13,6 +13,10 @@ class Coment extends Model
         'user_id',
         'item_id',
         'content',
+        'image', //trade画面用
+        'is_trading', //trade画面か？
+        'is_read', //既読フラグ
+        'is_hold', //未送信済フラグ
     ];
 
 

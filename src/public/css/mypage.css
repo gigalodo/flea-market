@@ -29,6 +29,7 @@
     font-size: 24px;
     font-weight: bold;
     color: #333;
+    margin: 0;
 }
 
 .mypage__edit-btn {
@@ -120,3 +121,34 @@
     -webkit-text-stroke: 2px black;
     pointer-events: none;
   }
+
+  .mypage__unread-total {
+  background: red;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 6px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.mypage-list__unread-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: red;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.mypage__stars {
+    margin-top: 4px;         /* ユーザー名のすぐ下に */
+    font-size: 28px;         /* 大きめ */
+    color: #FFD700;          /* ★はゴールド */
+    letter-spacing: 3px;     /* 星の間隔 */
+}
+
+.mypage__stars .empty {
+    color: #ccc;             /* 空白の☆は薄いグレー */
+}

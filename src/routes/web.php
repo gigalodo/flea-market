@@ -30,6 +30,7 @@ Route::middleware('auth')->group(
         Route::get('/mypage/profile', [UserController::class, 'profile']);
         Route::post('/mypage/profile', [UserController::class, 'storeProfile']);
 
+
         Route::get('/sell', [ItemController::class, 'sell']);
         Route::post('/sell', [ItemController::class, 'storeSell']);
 
@@ -41,5 +42,18 @@ Route::middleware('auth')->group(
 
         Route::get('/purchase/address/{item}', [ItemController::class, 'bindAddress']);
         Route::post('/purchase/address/{item}', [ItemController::class, 'storeAddress']);
+
+        //チャット
+        Route::get('/trade/{item}', [UserController::class, 'showTrade'])->name('trade.show');
+        Route::post('/chat/send/{item}', [UserController::class, 'send'])->name('chat.send');
+        Route::put('/chat/update/{chat}', [UserController::class, 'update'])->name('chat.update');
+        Route::delete('/chat/delete/{chat}', [UserController::class, 'destroy'])->name('chat.destroy');
+
+
+
+        Route::put('/trade/{item}/finish', [UserController::class, 'finish'])->name('trade.finish');
+        Route::post('/trade/{item}/evaluate', [UserController::class, 'evaluate'])->name('trade.evaluate');
+
+        Route::post('/chat/hold', [UserController::class, 'hold'])->name('chat.hold');
     }
 );

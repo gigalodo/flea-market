@@ -23,6 +23,7 @@ class Item extends Model
         'address',
         'building',
         'sold',
+        'is_finished', //取引終了フラグ
     ];
 
     public function condition()
@@ -38,5 +39,15 @@ class Item extends Model
     public function buyer()
     {
         return $this->belongsTo(User::class, 'buyer_id');
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Evaluation::class);
     }
 }

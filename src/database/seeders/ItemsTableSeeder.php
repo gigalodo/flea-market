@@ -16,14 +16,41 @@ class ItemsTableSeeder extends Seeder
     public function run()
     {
         $userId = 1;
+        $userId1 = $userId++;
+        $userId2 = $userId++;
+        $userId3 = $userId++;
 
         User::firstOrCreate([
-            'id' => $userId,
+            'id' => $userId1,
         ], [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'テストユーザー1',
+            'email' => 'test1@example.com',
+            'password' => bcrypt('password'),
+            'post_code' => '123-4567',
+            'address' => '東京',
+        ]);
+
+
+        User::firstOrCreate([
+            'id' => $userId2,
+        ], [
+            'name' => 'テストユーザー2',
+            'email' => 'test2@example.com',
+            'password' => bcrypt('password'),
+            'post_code' => '123-4567',
+            'address' => '東京',
+        ]);
+
+
+        User::firstOrCreate([
+            'id' => $userId3,
+        ], [
+            'name' => 'テストユーザー3',
+            'email' => 'test3@example.com',
             'password' => bcrypt('password'),
         ]);
+
+
 
         $conditionMap = [
             '良好' => 1,
@@ -40,7 +67,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => 'スタイリッシュなデザインのメンズ腕時計',
                 'img' => 'test/1',
                 'condition_id' => $conditionMap['良好'],
-                'user_id' => $userId,
+                'user_id' => $userId1,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -55,7 +82,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '高速で信頼性の高いハードディスク',
                 'img' => 'test/2',
                 'condition_id' => $conditionMap['目立った傷や汚れなし'],
-                'user_id' => $userId,
+                'user_id' => $userId1,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -70,7 +97,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '新鮮な玉ねぎ3束のセット',
                 'img' => 'test/3',
                 'condition_id' => $conditionMap['やや傷や汚れあり'],
-                'user_id' => $userId,
+                'user_id' => $userId1,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -85,7 +112,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => 'クラシックなデザインの革靴',
                 'img' => 'test/4',
                 'condition_id' => $conditionMap['状態が悪い'],
-                'user_id' => $userId,
+                'user_id' => $userId1,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -100,7 +127,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '高性能なノートパソコン',
                 'img' => 'test/5',
                 'condition_id' => $conditionMap['良好'],
-                'user_id' => $userId,
+                'user_id' => $userId1,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -115,7 +142,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '高音質のレコーディング用マイク',
                 'img' => 'test/6',
                 'condition_id' => $conditionMap['目立った傷や汚れなし'],
-                'user_id' => $userId,
+                'user_id' => $userId2,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -130,7 +157,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => 'おしゃれなショルダーバッグ',
                 'img' => 'test/7',
                 'condition_id' => $conditionMap['やや傷や汚れあり'],
-                'user_id' => $userId,
+                'user_id' => $userId2,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -145,7 +172,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '使いやすいタンブラー',
                 'img' => 'test/8',
                 'condition_id' => $conditionMap['状態が悪い'],
-                'user_id' => $userId,
+                'user_id' => $userId2,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -160,7 +187,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '手動のコーヒーミル',
                 'img' => 'test/9',
                 'condition_id' => $conditionMap['良好'],
-                'user_id' => $userId,
+                'user_id' => $userId2,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,
@@ -175,7 +202,7 @@ class ItemsTableSeeder extends Seeder
                 'detail' => '便利なメイクアップセット',
                 'img' => 'test/10',
                 'condition_id' => $conditionMap['目立った傷や汚れなし'],
-                'user_id' => $userId,
+                'user_id' => $userId2,
                 'buyer_id' => null,
                 'payment_method' => null,
                 'post_code' => null,

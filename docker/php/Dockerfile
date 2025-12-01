@@ -11,3 +11,6 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && composer self-update
 
 WORKDIR /var/www
+
+#render用追加
+CMD php artisan serve --host=0.0.0.0 --port=${PORT}

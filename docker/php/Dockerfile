@@ -1,6 +1,7 @@
 FROM php:8.1-fpm
 
-COPY php.ini /usr/local/etc/php/
+#render用修正
+COPY docker/php/php.ini /usr/local/etc/php/
 
 RUN apt update \
   && apt install -y default-mysql-client zlib1g-dev libzip-dev unzip \
@@ -13,7 +14,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 WORKDIR /var/www
 
 #render用追加
-COPY ../../src .
+COPY src .
 RUN composer install --no-dev --optimize-autoloader
 
 CMD php artisan serve --host=0.0.0.0 --port=${PORT}

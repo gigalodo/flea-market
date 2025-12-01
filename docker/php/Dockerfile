@@ -13,7 +13,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 WORKDIR /var/www
 
 #render用追加
-COPY . .
+COPY ../../src .
 RUN composer install --no-dev --optimize-autoloader
 
 CMD php artisan serve --host=0.0.0.0 --port=${PORT}

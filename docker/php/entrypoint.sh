@@ -17,8 +17,12 @@ ln -sf /dev/stderr /var/www/storage/logs/laravel.log
 # 初回マイグレーション & シーディング
 if [ ! -f /var/www/.migrated ]; then
     echo "Running initial migration & seeding..."
-    # データベース全テーブル削除してリセット
-    php artisan migrate:fresh --seed --force
+    # DB 接続が確立するまで少し待つ（Render は必須）
+    sleep 5
+
+    # テーブル全削除 → 再作成 → Seed
+    php artisan migrate:fresh --force
+    php artisan db:seed --force
     php artisan storage:link
     # 完了フラグ
     touch /var/www/.migrated

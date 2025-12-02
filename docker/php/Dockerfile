@@ -26,10 +26,10 @@ COPY src ./
 RUN composer install --no-dev --optimize-autoloader
 
 # nginx config を配置
-COPY docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # supervisor で両方起動
 RUN apt install -y supervisor
-COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.confx
 
 CMD ["/usr/bin/supervisord", "-n"]

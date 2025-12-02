@@ -24,6 +24,10 @@ WORKDIR /var/www
 # Laravel ソースコピー
 COPY src ./
 RUN composer install --no-dev --optimize-autoloader
+    && php artisan config:clear \
+    && php artisan route:clear \
+    && php artisan cache:clear \
+    && php artisan view:clear
 
 # nginx config を配置
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf

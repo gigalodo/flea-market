@@ -32,6 +32,9 @@ RUN composer install --no-dev --optimize-autoloader \
 # nginx config を配置
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
+# Laravel エラーログを標準出力に
+RUN ln -sf /dev/stderr /var/www/storage/logs/laravel.log
+
 # supervisor で両方起動
 RUN apt install -y supervisor
 COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf

@@ -23,7 +23,7 @@ WORKDIR /var/www
 
 # Laravel ソースコピー
 COPY src ./
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader \
     && php artisan config:clear \
     && php artisan route:clear \
     && php artisan cache:clear \

@@ -19,8 +19,15 @@ use App\Http\Controllers\UserController;
 Route::post('/register', [AuthController::class, 'authenticate']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/', [ItemController::class, 'index']);
-Route::post('/', [ItemController::class, 'serchItem']);
+
+Route::get('/', function () {
+    dd(env('APP_ENV'));
+});
+
+
+
+// Route::get('/', [ItemController::class, 'index']);
+// Route::post('/', [ItemController::class, 'serchItem']);
 
 Route::get('/item/{item}', [ItemController::class, 'bindItem']);
 

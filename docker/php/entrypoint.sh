@@ -14,5 +14,16 @@ php artisan view:clear
 # Laravel ログを標準出力にリンク
 ln -sf /dev/stderr /var/www/storage/logs/laravel.log
 
+# 初回マイグレーション & シーディング
+if [ ! -f /var/www/.migrated ]; then
+    echo "Running initial migration & seeding..."
+    php artisan migrate --force
+    php artisan db:seed --force
+    touch /var/www/.migrated
+
+    php artisan storage:link
+    
+fi
+
 # supervisord 起動
 exec /usr/bin/supervisord -n

@@ -30,6 +30,6 @@ COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # supervisor で両方起動
 RUN apt install -y supervisor
-COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.confx
+COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-n"]

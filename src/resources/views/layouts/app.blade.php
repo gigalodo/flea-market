@@ -16,7 +16,7 @@
         <div class="header__inner">
             <div class="header__utilities">
                 <a class="header__logo" href="/">
-                    <img src="{{ asset('images/logo.svg') }}" alt="CoachTechロゴ" class="header__logo-image">
+                    <img src="{{ asset('images/logo.png') }}" alt="CoachTechロゴ" class="header__logo-image">
                 </a>
                 @if (!request()->is('login') && !request()->is('register'))
                 <div class="header__search">

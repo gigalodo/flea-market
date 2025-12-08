@@ -97,7 +97,7 @@ class ItemController extends Controller
 
     public function bindItem(Item $item)
     {
-        $like_check = LikeButton::where('item_id', $item->id)->Where('user_id', Auth::id())->first() ? 1 : 0;
+        $like_check = LikeButton::where('item_id', $item->id)->Where('user_id', Auth::id())->exists() ? 1 : 0;
         $like_count = LikeButton::where('item_id', $item->id)->count();
         $like_button = [
             'check' => $like_check,
@@ -105,6 +105,8 @@ class ItemController extends Controller
         ];
 
         $coments = Coment::where('item_id', $item->id)->with('user')->get();
+
+        $item->load(['condition', 'categories.',])->get();
 
         return view('item', compact('item', 'coments', 'like_button'));
     }

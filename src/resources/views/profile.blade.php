@@ -14,7 +14,7 @@
 
         <div class="profile__form-group">
             <div class="profile__image-upload">
-                <img id="imagePreview" src="{{ asset('storage/profile_images/'.$user->user_img) }}" alt="{{$user->user_img}}" class="profile__preview-img">
+                <img id="imagePreview" src="{{ asset('storage/profile_images/'.$user->user_img) }}" alt="" class="profile__preview-img">
                 <label class="profile__file-label">
                     画像を選択する
                     <input type="file" name="user_img" class="profile__file-input" accept="image/*" onchange="previewImage(event)">

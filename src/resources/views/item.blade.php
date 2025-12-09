@@ -9,7 +9,7 @@
 <div class="item__content">
     <div class="item__image">
         <div class="image-wrapper">
-            <img src="{{ asset('storage/product_images/'.$item->img) }}" class="item__image" alt="{{$item->img}}">
+            <img src="{{ asset('storage/product_images/'.$item->img) }}" class="item__image" alt="">
             @if($item->sold)
             <span class="sold-label">SOLD</span>
             @endif
@@ -69,7 +69,7 @@
             <h2>コメント ({{$coments->count()}})</h2>
             @foreach($coments as $coment)
             <div class="coment__block">
-                <img src="{{asset('storage/profile_images/'.$coment->user->user_img)}}" alt="{{$coment->user->user_img}}" class="user-img">
+                <img src="{{asset('storage/profile_images/'.$coment->user->user_img)}}" alt="" class="user-img">
                 <div class="coment__content">
                     <p class="coment__user">{{$coment->user->name}}</p>
                     <p>{{$coment->content}}</p>

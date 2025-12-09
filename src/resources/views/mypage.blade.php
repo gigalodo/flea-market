@@ -10,7 +10,7 @@
 <div class="mypage">
     <div class="mypage__header">
         <div class="mypage__profile">
-            <img src="{{ asset('storage/profile_images/'.$user->user_img) }}" alt="{{$user->user_img}}">
+            <img src="{{ asset('storage/profile_images/'.$user->user_img) }}" alt="">
             <div>
                 <h1 class="mypage__username">{{$user->name}}</h1>
 
@@ -48,7 +48,7 @@
         <div class="mypage__item-card">
             <a href="/item/{{$item->id}}">
                 <div class="mypage-list__image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="{{$item->img}}">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="">
                     @if($item->sold)
                     <span class="mypage-list__sold-label">SOLD</span>
                     @endif
@@ -65,7 +65,7 @@
         <div class="mypage__item-card">
             <a href="/item/{{$item->id}}">
                 <div class="mypage-list__image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="{{$item->img}}">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="">
                     @if($item->sold)
                     <span class="mypage-list__sold-label">SOLD</span>
                     @endif
@@ -82,7 +82,7 @@
         <div class="mypage__item-card">
             <a href="/trade/{{$item->id}}">
                 <div class="mypage-list__image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="{{$item->img}}">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" class="mypage-list__image" alt="">
                     @if($item->unread_count > 0)
                     <span class="mypage-list__unread-badge">{{$item->unread_count}}</span>
                     @endif

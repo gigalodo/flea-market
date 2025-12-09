@@ -14,7 +14,7 @@
 
             <div class="product__header">
                 <div class="product__image">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{ $item->img }}">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="">
                 </div>
 
                 <div class="product__info">

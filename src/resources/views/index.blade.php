@@ -17,7 +17,7 @@
         <div class="product-list__card">
             <a href="/item/{{$item->id}}">
                 <div class="product-list__image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}" class="product-list__image">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="" class="product-list__image">
                     @if($item->sold)
                     <span class="product-list__sold-label">SOLD</span>
                     @endif
@@ -33,7 +33,7 @@
         <div class="product-list__card">
             <a href="/item/{{$item->id}}">
                 <div class="product-list__image-wrapper">
-                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="{{$item->img}}" class="product-list__image">
+                    <img src="{{ asset('storage/product_images/'.$item->img) }}" alt="" class="product-list__image">
                     @if($item->sold)
                     <span class="product-list__sold-label">SOLD</span>
                     @endif

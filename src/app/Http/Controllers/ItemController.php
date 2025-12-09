@@ -106,7 +106,7 @@ class ItemController extends Controller
 
         $coments = Coment::where('item_id', $item->id)->with('user')->get();
 
-        $item->load(['condition', 'categories.',])->get();
+        $item->load(['condition', 'categories.category',])->get();
 
         return view('item', compact('item', 'coments', 'like_button'));
     }

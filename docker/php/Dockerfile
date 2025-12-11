@@ -1,45 +1,30 @@
-FROM php:8.1-fpm
+# -------------------------
+# 1. PHP + 必要拡張
+# -------------------------
+FROM php:8.2-fpm
 
-# nginx インストール
-RUN apt update && apt install -y nginx
-
-# デフォルト設定を削除（これ超重要）
-RUN rm -f /etc/nginx/sites-enabled/default
-RUN rm -f /etc/nginx/conf.d/default.conf
-
-# PHP 設定
-COPY docker/php/php.ini /usr/local/etc/php/
-
-RUN apt update \
-  && apt install -y libpq-dev zlib1g-dev libzip-dev unzip \
-  && docker-php-ext-install pdo_pgsql zip
+RUN apt-get update && apt-get install -y \
+    git unzip libzip-dev libpq-dev libonig-dev \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip
 
 # Composer
-RUN curl -sS https://getcomposer.org/installer | php \
-  && mv composer.phar /usr/local/bin/composer \
-  && composer self-update
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www
+# -------------------------
+# 2. アプリをコピー
+# -------------------------
+WORKDIR /app
+COPY . .
 
-# Laravel ソースコピー
-COPY src ./
-
-
+# Laravel インストール
 RUN composer install --no-dev --optimize-autoloader
 
+# 777 にすると危険なので推奨しない（必要なら変更）
+RUN chmod -R 775 storage bootstrap/cache
 
-# nginx config を配置
-COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-
-
-# supervisor で両方起動
-RUN apt install -y supervisor
-COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-
-# entrypoint スクリプト
-COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# 起動時に entrypoint.sh を実行
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# -------------------------
+# 3. Webサーバとして PHP-FPM を直接公開
+#    Koyeb は Entrypoint で FPM をそのまま扱える
+# -------------------------
+EXPOSE 9000
+CMD ["php-fpm"]
